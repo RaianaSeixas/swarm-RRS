@@ -119,8 +119,8 @@ onlooker bee phase
 def OnlookerBee(xo,x,Fun): #OnlookerBee(xo,x_Employed)
     rows = xo.shape[0]
     cols = xo.shape[1]
-    prob=PROB(x)
-    #best=np.argmax(prob)
+    prob=PROB(x,Fun)
+    #best=np.argmax(prob,Fun)
     
     for i in range(rows):
       rd=randint(0, (NPAR-1))
