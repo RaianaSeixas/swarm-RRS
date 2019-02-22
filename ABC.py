@@ -129,7 +129,7 @@ def OnlookerBee(xo,x,MAX,MIN,Fun): #OnlookerBee(xo,x_Employed)
         fi=np.random.uniform(low=-1.0, high=1.0, size=None)
         Xmi=xo[i,]+fi*(xo[i,]-x[rd,])
         xo[i,]=np.copy(Xmi)
-     xo=np.clip(xo,MAX,MIN)
+    xo=np.clip(xo,MAX,MIN)
     
     return xo
 
