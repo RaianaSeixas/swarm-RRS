@@ -116,11 +116,11 @@ def EmployedBee(xo,x,MAX,MIN,Fun) :
 '''
 onlooker bee phase
 '''
-def OnlookerBee(xo,x,Fun): #OnlookerBee(xo,x_Employed)
+def OnlookerBee(xo,x,MAX,MIN,Fun): #OnlookerBee(xo,x_Employed)
     NPAR = xo.shape[0]
     #PAR = xo.shape[1]
     prob=PROB(x,Fun)
-    #best=np.argmax(prob,Fun)
+    #best=np.argmax(prob)
     
     for i in range(NPAR):
       rd=randint(0, (NPAR-1))
@@ -129,6 +129,8 @@ def OnlookerBee(xo,x,Fun): #OnlookerBee(xo,x_Employed)
         fi=np.random.uniform(low=-1.0, high=1.0, size=None)
         Xmi=xo[i,]+fi*(xo[i,]-x[rd,])
         xo[i,]=np.copy(Xmi)
+     xo=np.clip(xo,MAX,MIN)
+    
     return xo
 
 '''
@@ -167,7 +169,7 @@ def ABCOPtim(ITE,PAR,ntrail,NPAR,MAX,MIN,Fun):
       xbest=GetBest(x_Employed,xbest,Fun)
       vbest_new=Fun(xbest)
       xo=Enxame(PAR,NPAR,MAX,MIN) # inicializa OnlookerBee
-      x_Onlooker=OnlookerBee(xo,x_Employed,Fun)
+      x_Onlooker=OnlookerBee(xo,x_Employed,MAX,MIN,Fun)
       xbest=GetBest(x_Onlooker,xbest,Fun)
       x_Scout=Enxame(PAR,NPAR,MAX,MIN) # inicializa ScoutBee ( a rigor so esta linha basta)
       xbest=GetBest(x_Scout,xbest,Fun)
