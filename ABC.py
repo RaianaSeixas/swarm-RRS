@@ -118,15 +118,19 @@ def EmployedBee(xo,x,MAX,MIN,Fun) :
 '''
 onlooker bee phase
 '''
-def OnlookerBee(xo,x,Fun):
+def OnlookerBee(xo,x): #OnlookerBee(xo,x_Employed)
     rows = xo.shape[0]
     cols = xo.shape[1]
-    prob=PROB(x,Fun)
-    best=np.argmax(prob)
+    prob=PROB(x)
+    #best=np.argmax(prob)
     
     for i in range(rows):
-        if(Fun(x[best,])<Fun(xo[i,])):
-            xo[i,]=np.copy(x[best,])
+      rd=randint(0, (NPAR-1))
+      #rd=best
+      if(prob[rd] > prob[i]):
+        fi=np.random.uniform(low=-1.0, high=1.0, size=None)
+        Xmi=xo[i,]+fi*(xo[i,]-x[rd,])
+        xo[i,]=np.copy(Xmi)
     return xo
 
 '''
