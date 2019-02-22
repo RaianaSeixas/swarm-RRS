@@ -122,7 +122,7 @@ def OnlookerBee(xo,x,Fun): #OnlookerBee(xo,x_Employed)
     prob=PROB(x,Fun)
     #best=np.argmax(prob,Fun)
     
-    for i in range(rows):
+    for i in range(NPAR):
       rd=randint(0, (NPAR-1))
       #rd=best
       if(prob[rd] > prob[i]):
