@@ -117,8 +117,8 @@ def EmployedBee(xo,x,MAX,MIN,Fun) :
 onlooker bee phase
 '''
 def OnlookerBee(xo,x,Fun): #OnlookerBee(xo,x_Employed)
-    rows = xo.shape[0]
-    cols = xo.shape[1]
+    NPAR = xo.shape[0]
+    #PAR = xo.shape[1]
     prob=PROB(x,Fun)
     #best=np.argmax(prob,Fun)
     
